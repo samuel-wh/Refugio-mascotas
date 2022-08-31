@@ -1,0 +1,44 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+<div class="mb-3 mt-4">
+      <h3>Lista de personas</h3>
+    </div>
+<table class="table table-bordered border-primary">
+    <thead>
+        <tr>
+            <td>#</td>
+            <td>Nombre</td>
+            <td>Apellidos</td>
+            <td>Edad</td>
+            <td>Telefono</td>
+            <td>Email</td>
+            <td>Domicilio</td>
+        </tr>
+    <thead>
+    <tbody>
+        <!-- Validamos si tenemos informacion de las mascotas --> 
+        {% if object_list %}
+        <!-- Bucle for para listar todas las mascotas --> 
+        {% for Persona in object_list %}
+        <tr>
+            <!-- Accedemos a los atributos de las mascotas --> 
+            <td>{{Persona.id}}</td>
+            <td>{{Persona.nombre}}</td>
+            <td>{{Persona.apellidos}}</td>
+            <td>{{Persona.edad}}</td>
+            <td>{{Persona.telefono}}</td>
+            <td>{{Persona.email}}</td>
+            <td>{{Persona.domicilio}}</td>
+           {% comment %}  <td class="text-center" >
+                <a class="btn btn-primary" href="{% url 'mascota_editar_c' mascota.id  %}">Editar</a>
+                <a class="btn btn-danger" href="{% url 'mascota_eliminar_c' mascota.id  %}">Eliminar</a>
+            </td> {% endcomment %}
+        </tr>
+        {% endfor %}
+        {% else %}
+        <h1> No hay registros de mascotas </h1>
+        {% endif %}
+    </tbody>
+</table>
+{% endblock %}

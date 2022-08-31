@@ -1,0 +1,47 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+<div class="mb-3 mt-4">
+    <h3>Lista de mascotas</h3>
+</div>
+<table class="table table-bordered border-primary">
+    <thead>
+        <tr>
+            <td>#</td>
+            <td>Nombre</td>
+            <td>Sexo</td>
+            <td>Edad</td>
+            <td>Fecha de rescate</td>
+            <td>Adoptante</td>
+            <td>Acciones</td>
+        </tr>
+        <thead>
+        <tbody>
+            <!-- Validamos si tenemos informacion de las mascotas -->
+            {% if mascotas %}
+            <!-- Bucle for para listar todas las mascotas -->
+            {% for mascota in mascotas %}
+            <tr>
+                <!-- Accedemos a los atributos de las mascotas -->
+                <td>{{mascota.id}}</td>
+                <td class="w-25 p-3">{%if mascota.foto%}
+                    <img class="img-thumbnail" src="{{mascota.foto.url}}" width="100%" />
+                    {%endif%}
+                </td>
+                <td>{{mascota.nombre}}</td>
+                <td>{{mascota.sexo}}</td>
+                <td>{{mascota.edad_aproximada}}</td>
+                <td>{{mascota.fecha_rescate}}</td>
+                <td>{{mascota.persona.nombre}} {{mascota.persona.apellido}}</td>
+                <td class="text-center">
+                    <a class="btn btn-primary mb-2 mt-2" href="{% url 'mascota_editar_f' mascota.id  %}">Editar</a>
+                    <a class="btn btn-danger mb-2 mt-2" href="{% url 'mascota_eliminar_f' mascota.id  %}">Eliminar</a>
+                </td>
+            </tr>
+            {% endfor %}
+            {% else %}
+            <h1> No hay registros de mascotas </h1>
+            {% endif %}
+        </tbody>
+</table>
+{% endblock %}

@@ -1,0 +1,66 @@
+{% extends 'base/base.html' %} {% block content %}
+
+<form method="post">
+  <!-- Tocken de seguridad que provee django -->
+  {% csrf_token %}
+  <!-- Variable para agregar el formulario y pintarlo-->
+
+  <div class="row justify-content-center">
+    <!---->
+    <div class="mb-4 mt-4">
+      <h1>Solicitud de adopcion</h1>
+    </div>
+    <div class="mb-4 mt-4">
+      <label class="form-label" for="{{form2.nombre.name}}"
+        >{{form2.nombre.label}}</label
+      >
+      {{form2.nombre}}
+    </div>
+    <div class="mb-3 mt-4">
+      <label class="form-label" for="{{form2.nombre.apellidos}}"
+        >{{form2.apellidos.label}}</label
+      >
+      {{form2.apellidos}}
+    </div>
+    <div class="mb-3 mt-4">
+      <label class="form-label" for="{{form2.edad.name}}"
+        >{{form2.edad.label}}</label
+      >
+      {{form2.edad}}
+    </div>
+    <div class="mb-3 mt-4">
+      <label class="form-label" for="{{form2.email.name}}"
+        >{{form2.email.label}}</label
+      >
+      {{form2.email}}
+    </div>
+    <div class="mb-3 mt-4">
+      <label class="form-label" for="{{form2.telefono.name}}"
+        >{{form2.telefono.label}}</label
+      >
+      {{form2.telefono}}
+    </div>
+    <div class="mb-3 mt-4">
+      <label class="form-label" for="{{form2.domicilio.name}}"
+        >{{form2.domicilio.label}}</label
+      >
+      {{form2.domicilio}}
+    </div>
+    <div class="mb-3 mt-4">
+      <label class="form-label" for="{{form.numero_mascotas.name}}"
+        >{{form.numero_mascotas.label}}</label
+      >
+      {{form.numero_mascotas}}
+    </div>
+    <div class="mb-3 mt-4">
+      <label class="form-label" for="{{form.razones.name}}"
+        >{{form.razones.label}}</label
+      >
+      {{form.razones}}
+    </div>
+  </div>
+
+  <button type="submit" class="btn btn-secondary">Guardar</button>
+</form>
+
+{% endblock %}

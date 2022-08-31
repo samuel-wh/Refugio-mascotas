@@ -1,0 +1,62 @@
+{% extends 'base/base.html' %} {% block content %}
+<form method="post" enctype="multipart/form-data">
+  <!-- Tocken de seguridad que provee django -->
+  {% csrf_token %}
+  <!-- Variable para agregar el formulario y pintarlo-->
+  <div class="row justify-content-center">
+    <!---->
+    <div class="mb-3 mt-4">
+      <h1>Registrar nueva mascota</h1>
+    </div>
+    <div class="mb-3 mt-4">
+      <label class="form-label" for="{{form.foto.name}}"
+        >{{form.foto.label}}</label
+      >
+      <div class="mb-3 mt4">
+        {%if mascota.foto%}
+        <img src="{{mascota.foto.url}}" width="100%" /> {%endif%}
+      </div>
+      <div class="mb-3 mt4">{{form.foto}}</div>
+    </div>
+    <div class="mb-3 mt-4">
+      <label class="form-label" for="{{form.nombre.name}}"
+        >{{form.nombre.label}}</label
+      >
+      {{form.nombre}}
+    </div>
+    <div class="mb-3 mt-4">
+      <label class="form-label" for="{{form.sexo.name}}"
+        >{{form.sexo.label}}</label
+      >
+      {{form.sexo}}
+    </div>
+    <div class="mb-3 mt-4">
+      <label class="form-label" for="{{form.edad_aproximada.name}}"
+        >{{form.edad_aproximada.label}}</label
+      >
+      {{form.edad_aproximada}}
+    </div>
+    <div class="mb-3 mt-4">
+      <label class="form-label" for="{{form.fecha_rescate.name}}"
+        >{{form.fecha_rescate.label}}</label
+      >
+      {{form.fecha_rescate}}
+    </div>
+    <div class="mb-3 mt-4">
+      <label class="form-label" for="{{form.persona.name}}"
+        >{{form.persona.label}}</label
+      >
+      {{form.persona}}
+    </div>
+    <div class="mb-3 mt-4 form-check">
+      <label class="form-label form-check-lable" for="{{form.vacuna.name}}"
+        >{{form.vacuna.label}}</label
+      >
+      {{form.vacuna}}
+    </div>
+  </div>
+
+  <button type="submit" class="btn btn-secondary">Guardar</button>
+</form>
+
+{% endblock %}
